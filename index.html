@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FULL PROTEIN — Italian • Arabic • Fusion | Jeddah</title>
+  <meta name="description" content="Full Protein Restaurant in Jeddah — A premium fusion of Italian and Arabic cuisine. Dine in, order online, or reserve a table.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ========== HEADER / NAVIGATION ========== -->
+  <header class="header" id="header">
+    <div class="header-inner">
+      <a href="#" class="logo" data-page="home">
+        <span class="logo-icon"><i class="fas fa-utensils"></i></span>
+        <span class="logo-text">FULL <span class="logo-accent">PROTEIN</span></span>
+      </a>
+      <nav class="nav" id="nav">
+        <a href="#" class="nav-link active" data-page="home">Home</a>
+        <a href="#" class="nav-link" data-page="menu">Menu</a>
+        <a href="#" class="nav-link" data-page="order">Order</a>
+        <a href="#" class="nav-link" data-page="reservations">Reservations</a>
+        <a href="#" class="nav-link" data-page="gallery">Gallery</a>
+        <a href="#" class="nav-link" data-page="about">About</a>
+        <a href="#" class="nav-link" data-page="contact">Contact</a>
+      </nav>
+      <div class="header-actions">
+        <button class="cart-btn" id="cartBtn" aria-label="Open Cart">
+          <i class="fas fa-shopping-bag"></i>
+          <span class="cart-badge" id="cartBadge">0</span>
+        </button>
+        <button class="hamburger" id="hamburger" aria-label="Toggle Menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ========== CART DRAWER ========== -->
+  <div class="cart-overlay" id="cartOverlay"></div>
+  <div class="cart-drawer" id="cartDrawer">
+    <div class="cart-drawer-header">
+      <h3><i class="fas fa-shopping-bag"></i> Your Order</h3>
+      <button class="cart-close" id="cartClose" aria-label="Close Cart"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="cart-drawer-body" id="cartBody">
+      <div class="cart-empty">
+        <i class="fas fa-shopping-bag"></i>
+        <p>Your cart is empty</p>
+        <p class="cart-empty-sub">Browse our menu and add items you love</p>
+      </div>
+      <div class="cart-items" id="cartItems"></div>
+    </div>
+    <div class="cart-drawer-footer" id="cartFooter" style="display:none;">
+      <div class="cart-summary">
+        <div class="cart-summary-row">
+          <span>Subtotal</span>
+          <span id="cartSubtotal">0.00 SAR</span>
+        </div>
+        <div class="cart-summary-row">
+          <span>VAT (15%)</span>
+          <span id="cartTax">0.00 SAR</span>
+        </div>
+        <div class="cart-summary-row cart-summary-total">
+          <span>Total</span>
+          <span id="cartTotal">0.00 SAR</span>
+        </div>
+      </div>
+      <button class="btn btn-gold btn-block" id="checkoutBtn">Proceed to Checkout</button>
+    </div>
+    <!-- Checkout Form (inside drawer) -->
+    <div class="checkout-form" id="checkoutForm" style="display:none;">
+      <h4>Checkout Details</h4>
+      <form id="orderForm">
+        <div class="form-group">
+          <label for="orderName">Full Name</label>
+          <input type="text" id="orderName" required placeholder="Your name">
+        </div>
+        <div class="form-group">
+          <label for="orderPhone">Phone Number</label>
+          <input type="tel" id="orderPhone" required placeholder="+966 5X XXX XXXX">
+        </div>
+        <div class="form-group">
+          <label for="orderTable">Table Number</label>
+          <input type="text" id="orderTable" placeholder="e.g. 12">
+        </div>
+        <div class="form-group">
+          <label for="orderNotes">Special Notes</label>
+          <textarea id="orderNotes" rows="3" placeholder="Allergies, preferences..."></textarea>
+        </div>
+        <div class="checkout-btns">
+          <button type="button" class="btn btn-outline" id="checkoutBack"><i class="fas fa-arrow-left"></i> Back</button>
+          <button type="submit" class="btn btn-gold" id="submitOrderBtn">Place Order <i class="fas fa-check"></i></button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- ========== PAGE: HOME ========== -->
+  <section class="page active" id="page-home">
+    <div class="hero">
+      <div class="hero-overlay"></div>
+      <div class="hero-content">
+        <div class="hero-badge">Jeddah • Saudi Arabia</div>
+        <h1 class="hero-title">FULL <span class="text-gold">PROTEIN</span></h1>
+        <p class="hero-subtitle">Italian <span class="dot">•</span> Arabic <span class="dot">•</span> Fusion</p>
+        <p class="hero-desc">An exquisite dining experience where the rich traditions of Italian cuisine meet the vibrant flavors of the Arabian Peninsula.</p>
+        <div class="hero-cta">
+          <a href="#" class="btn btn-gold btn-lg" data-page="menu">Explore Our Menu</a>
+          <a href="#" class="btn btn-outline btn-lg" data-page="reservations">Reserve a Table</a>
+        </div>
+      </div>
+      <div class="hero-scroll">
+        <span>Scroll Down</span>
+        <i class="fas fa-chevron-down"></i>
+      </div>
+    </div>
+
+    <!-- Featured Dishes -->
+    <section class="section featured-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">From Our Kitchen</span>
+          <h2 class="section-title">Featured <span class="text-gold">Dishes</span></h2>
+          <p class="section-desc">Chef's special selections blending the best of both culinary worlds</p>
+        </div>
+        <div class="featured-grid" id="featuredGrid">
+          <div class="loader"><i class="fas fa-spinner fa-spin"></i> Loading...</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quick Info -->
+    <section class="section info-section">
+      <div class="container">
+        <div class="info-grid">
+          <div class="info-card">
+            <i class="fas fa-location-dot"></i>
+            <h4>Location</h4>
+            <p>Jeddah, Saudi Arabia<br>Al-Madinah Road</p>
+          </div>
+          <div class="info-card">
+            <i class="fas fa-clock"></i>
+            <h4>Hours</h4>
+            <p>Sun–Thu: 12PM–12AM<br>Fri–Sat: 1PM–1AM</p>
+          </div>
+          <div class="info-card">
+            <i class="fas fa-phone"></i>
+            <h4>Reservations</h4>
+            <p>+966 55 123 4567<br>info@fullprotein.sa</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <!-- ========== PAGE: MENU ========== -->
+  <section class="page" id="page-menu">
+    <div class="page-hero">
+      <div class="container">
+        <h1 class="page-hero-title">Our <span class="text-gold">Menu</span></h1>
+        <p class="page-hero-desc">Discover our fusion creations — where Italian tradition meets Arabic soul</p>
+      </div>
+    </div>
+    <section class="section menu-section">
+      <div class="container">
+        <div class="menu-tabs" id="menuTabs">
+          <button class="menu-tab active" data-category="Appetizers">Appetizers</button>
+          <button class="menu-tab" data-category="Mains">Mains</button>
+          <button class="menu-tab" data-category="Pasta">Pasta</button>
+          <button class="menu-tab" data-category="Grills">Grills</button>
+          <button class="menu-tab" data-category="Salads">Salads</button>
+          <button class="menu-tab" data-category="Desserts">Desserts</button>
+          <button class="menu-tab" data-category="Drinks">Drinks</button>
+          <button class="menu-tab" data-category="all">All Items</button>
+        </div>
+        <div class="menu-grid" id="menuGrid">
+          <div class="loader"><i class="fas fa-spinner fa-spin"></i> Loading menu...</div>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <!-- ========== PAGE: ORDER ONLINE ========== -->
+  <section class="page" id="page-order">
+    <div class="page-hero">
+      <div class="container">
+        <h1 class="page-hero-title">Order <span class="text-gold">Online</span></h1>
+        <p class="page-hero-desc">Browse our menu, add to cart, and order for dine-in</p>
+      </div>
+    </div>
+    <section class="section order-section">
+      <div class="container">
+        <div class="order-layout">
+          <div class="order-menu">
+            <div class="order-categories" id="orderCategories">
+              <button class="menu-tab active" data-category="all">All</button>
+              <button class="menu-tab" data-category="Appetizers">Appetizers</button>
+              <button class="menu-tab" data-category="Mains">Mains</button>
+              <button class="menu-tab" data-category="Pasta">Pasta</button>
+              <button class="menu-tab" data-category="Grills">Grills</button>
+              <button class="menu-tab" data-category="Salads">Salads</button>
+              <button class="menu-tab" data-category="Desserts">Desserts</button>
+              <button class="menu-tab" data-category="Drinks">Drinks</button>
+            </div>
+            <div class="order-grid" id="orderGrid">
+              <div class="loader"><i class="fas fa-spinner fa-spin"></i> Loading menu...</div>
+            </div>
+          </div>
+          <div class="order-sidebar-sticky">
+            <div class="order-mini-cart">
+              <h4><i class="fas fa-shopping-bag"></i> Your Cart</h4>
+              <div class="order-mini-items" id="orderMiniItems">
+                <p class="cart-empty-text">Cart is empty</p>
+              </div>
+              <div class="order-mini-total" id="orderMiniTotal" style="display:none;">
+                <div class="cart-summary-row cart-summary-total">
+                  <span>Total</span>
+                  <span id="orderMiniTotalVal">0.00 SAR</span>
+                </div>
+                <button class="btn btn-gold btn-block" id="orderCheckoutBtn"><i class="fas fa-shopping-bag"></i> Checkout</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <!-- ========== PAGE: RESERVATIONS ========== -->
+  <section class="page" id="page-reservations">
+    <div class="page-hero">
+      <div class="container">
+        <h1 class="page-hero-title">Reserve a <span class="text-gold">Table</span></h1>
+        <p class="page-hero-desc">Book your dining experience at Full Protein</p>
+      </div>
+    </div>
+    <section class="section reservation-section">
+      <div class="container">
+        <div class="reservation-layout">
+          <div class="reservation-info">
+            <div class="reservation-card">
+              <i class="fas fa-phone"></i>
+              <h4>Call Us</h4>
+              <p>+966 55 123 4567</p>
+            </div>
+            <div class="reservation-card">
+              <i class="fas fa-envelope"></i>
+              <h4>Email</h4>
+              <p>info@fullprotein.sa</p>
+            </div>
+            <div class="reservation-card">
+              <i class="fas fa-clock"></i>
+              <h4>Hours</h4>
+              <p>Sun–Thu: 12PM–12AM<br>Fri–Sat: 1PM–1AM</p>
+            </div>
+            <div class="reservation-card">
+              <i class="fas fa-location-dot"></i>
+              <h4>Location</h4>
+              <p>Al-Madinah Road, Jeddah<br>Saudi Arabia</p>
+            </div>
+          </div>
+          <form class="reservation-form" id="reservationForm">
+            <h3>Book a Table</h3>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="resName">Full Name</label>
+                <input type="text" id="resName" required placeholder="Your name">
+              </div>
+              <div class="form-group">
+                <label for="resPhone">Phone Number</label>
+                <input type="tel" id="resPhone" required placeholder="+966 5X XXX XXXX">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="resEmail">Email Address</label>
+              <input type="email" id="resEmail" required placeholder="you@example.com">
+            </div>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="resDate">Date</label>
+                <input type="date" id="resDate" required>
+              </div>
+              <div class="form-group">
+                <label for="resTime">Time</label>
+                <input type="time" id="resTime" required>
+              </div>
+              <div class="form-group">
+                <label for="resGuests">Number of Guests</label>
+                <select id="resGuests" required>
+                  <option value="1">1 Guest</option>
+                  <option value="2" selected>2 Guests</option>
+                  <option value="3">3 Guests</option>
+                  <option value="4">4 Guests</option>
+                  <option value="5">5 Guests</option>
+                  <option value="6">6 Guests</option>
+                  <option value="7">7 Guests</option>
+                  <option value="8">8 Guests</option>
+                  <option value="10">10+ Guests</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="resNotes">Special Requests</label>
+              <textarea id="resNotes" rows="3" placeholder="Allergies, celebrations, seating preferences..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-gold btn-block" id="reservationSubmit">
+              <i class="fas fa-calendar-check"></i> Confirm Reservation
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <!-- ========== PAGE: GALLERY ========== -->
+  <section class="page" id="page-gallery">
+    <div class="page-hero">
+      <div class="container">
+        <h1 class="page-hero-title">Our <span class="text-gold">Gallery</span></h1>
+        <p class="page-hero-desc">A visual journey through our culinary masterpieces</p>
+      </div>
+    </div>
+    <section class="section gallery-section">
+      <div class="container">
+        <div class="gallery-grid" id="galleryGrid">
+          <div class="loader"><i class="fas fa-spinner fa-spin"></i> Loading gallery...</div>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <!-- ========== PAGE: ABOUT ========== -->
+  <section class="page" id="page-about">
+    <div class="page-hero">
+      <div class="container">
+        <h1 class="page-hero-title">About <span class="text-gold">Us</span></h1>
+        <p class="page-hero-desc">The story behind Full Protein</p>
+      </div>
+    </div>
+    <section class="section about-section">
+      <div class="container">
+        <div class="about-content">
+          <div class="about-image">
+            <img src="/uploads/menu-6.jpg" alt="Full Protein Restaurant">
+          </div>
+          <div class="about-text">
+            <span class="section-tag">Our Story</span>
+            <h2>Where Italian Elegance<br>Meets <span class="text-gold">Arabic Tradition</span></h2>
+            <p>Full Protein was born from a vision — to create a dining experience that bridges two of the world's greatest culinary traditions. Located in the heart of Jeddah, our restaurant brings together the refined techniques of Italian cooking with the bold, aromatic flavors of the Arabian Peninsula.</p>
+            <p>Every dish on our menu tells a story of fusion and harmony. Our chefs masterfully combine Italian classics like handmade pasta and risotto with Arabic staples such as za'atar, sumac, saffron, and premium Saudi dates. The result is a menu that feels both familiar and excitingly new.</p>
+            <p>We source the finest local ingredients and import select Italian specialties to ensure every plate meets our exacting standards. From our wood-fired pizzas topped with shawarma-spiced chicken to our saffron-infused linguine, every bite is crafted to surprise and delight.</p>
+            <div class="about-stats">
+              <div class="stat">
+                <span class="stat-number">24+</span>
+                <span class="stat-label">Signature Dishes</span>
+              </div>
+              <div class="stat">
+                <span class="stat-number">100%</span>
+                <span class="stat-label">Fresh Ingredients</span>
+              </div>
+              <div class="stat">
+                <span class="stat-number">2024</span>
+                <span class="stat-label">Founded</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Chef Section -->
+    <section class="section chef-section">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-tag">Our Team</span>
+          <h2 class="section-title">Meet Our <span class="text-gold">Chef</span></h2>
+        </div>
+        <div class="chef-card">
+          <div class="chef-avatar">
+            <i class="fas fa-user-chef"></i>
+          </div>
+          <h3>Chef Marco Al-Harbi</h3>
+          <p class="chef-title">Executive Chef &amp; Founder</p>
+          <p class="chef-bio">With training in Milan and roots in Jeddah, Chef Marco brings a unique perspective to every dish. His culinary philosophy centers on respect for tradition paired with the courage to innovate — creating the fusion flavors that define Full Protein.</p>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <!-- ========== PAGE: CONTACT ========== -->
+  <section class="page" id="page-contact">
+    <div class="page-hero">
+      <div class="container">
+        <h1 class="page-hero-title">Get in <span class="text-gold">Touch</span></h1>
+        <p class="page-hero-desc">We'd love to hear from you</p>
+      </div>
+    </div>
+    <section class="section contact-section">
+      <div class="container">
+        <div class="contact-layout">
+          <div class="contact-info">
+            <div class="contact-card">
+              <i class="fas fa-map-pin"></i>
+              <div>
+                <h4>Visit Us</h4>
+                <p>Al-Madinah Road<br>Jeddah, Saudi Arabia</p>
+              </div>
+            </div>
+            <div class="contact-card">
+              <i class="fas fa-phone-alt"></i>
+              <div>
+                <h4>Call Us</h4>
+                <p>+966 55 123 4567</p>
+              </div>
+            </div>
+            <div class="contact-card">
+              <i class="fas fa-envelope"></i>
+              <div>
+                <h4>Email</h4>
+                <p>info@fullprotein.sa</p>
+              </div>
+            </div>
+            <div class="contact-card">
+              <i class="fas fa-clock"></i>
+              <div>
+                <h4>Working Hours</h4>
+                <p>Sun–Thu: 12:00 PM – 12:00 AM<br>Fri–Sat: 1:00 PM – 1:00 AM</p>
+              </div>
+            </div>
+            <div class="contact-social">
+              <h4>Follow Us</h4>
+              <div class="social-links">
+                <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" aria-label="Snapchat"><i class="fab fa-snapchat"></i></a>
+                <a href="#" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                <a href="#" aria-label="TikTok"><i class="fab fa-tiktok"></i></a>
+              </div>
+            </div>
+          </div>
+          <form class="contact-form" id="contactForm">
+            <h3>Send Us a Message</h3>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="contactName">Your Name</label>
+                <input type="text" id="contactName" required placeholder="Full name">
+              </div>
+              <div class="form-group">
+                <label for="contactEmail">Email Address</label>
+                <input type="email" id="contactEmail" required placeholder="you@example.com">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="contactPhone">Phone Number</label>
+              <input type="tel" id="contactPhone" placeholder="+966 5X XXX XXXX">
+            </div>
+            <div class="form-group">
+              <label for="contactMessage">Message</label>
+              <textarea id="contactMessage" rows="5" required placeholder="Tell us how we can help..."></textarea>
+            </div>
+            <button type="submit" class="btn btn-gold btn-block" id="contactSubmit">
+              <i class="fas fa-paper-plane"></i> Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </section>
+
+  <!-- ========== TOAST / NOTIFICATION ========== -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- ========== FOOTER ========== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-content">
+        <div class="footer-brand">
+          <span class="logo-icon"><i class="fas fa-utensils"></i></span>
+          <span class="logo-text">FULL <span class="text-gold">PROTEIN</span></span>
+          <p>Italian • Arabic • Fusion<br>Jeddah, Saudi Arabia</p>
+        </div>
+        <div class="footer-links">
+          <h4>Quick Links</h4>
+          <a href="#" data-page="menu">Menu</a>
+          <a href="#" data-page="order">Order Online</a>
+          <a href="#" data-page="reservations">Reservations</a>
+          <a href="#" data-page="gallery">Gallery</a>
+        </div>
+        <div class="footer-links">
+          <h4>Contact</h4>
+          <a href="#" data-page="contact">Get in Touch</a>
+          <a href="#" data-page="about">About Us</a>
+          <a href="tel:+966551234567">+966 55 123 4567</a>
+          <a href="mailto:info@fullprotein.sa">info@fullprotein.sa</a>
+        </div>
+        <div class="footer-hours">
+          <h4>Hours</h4>
+          <p>Sun–Thu: 12PM–12AM</p>
+          <p>Fri–Sat: 1PM–1AM</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2024 Full Protein Restaurant. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
